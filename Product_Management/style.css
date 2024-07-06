@@ -1,0 +1,22 @@
+body{
+    background-color: aquamarine;
+}
+
+#table-products{
+    width: 100vw;
+}
+
+#table-products td{
+    width: 25vw;
+    background-color: azure;
+}
+
+#table-products tr {
+    border-collapse: separate; 
+    border-spacing: 10px; 
+    background-color: azure;
+}
+
+#description-td{
+    width: 80vw;
+}

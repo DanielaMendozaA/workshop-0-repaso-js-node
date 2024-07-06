@@ -13,12 +13,13 @@ class Task {
 class TaskManager {
     constructor() {
         this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        console.log("tasks en el localstorage", localStorage.getItem('tasks'));
-        this.loadTasks();
+        // console.log("tasks en el localstorage", localStorage.getItem('tasks'));
+        this.renderTasks();
     }
 
     addTask(description) {
         const id = this.tasks.length ? this.tasks[this.tasks.length - 1].id + 1 : 1;
+        console.log(this.tasks.length);
         const task = new Task(id, description);
         this.tasks.push(task);
         this.saveTasks();
@@ -55,9 +56,9 @@ class TaskManager {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
 
-    loadTasks() {
-        this.renderTasks();
-    }
+    // loadTasks() {
+    //     this.renderTasks();
+    // }
 
     renderTasks() {
         const taskList = document.getElementById('task-list');
@@ -78,11 +79,18 @@ class TaskManager {
             updateButton.textContent = 'Actualizar Nombre';
             updateButton.addEventListener('click', (e) => {
                 e.stopPropagation();
-                let newName = prompt("Ingresa el nuevo nombre de la tarea");
-                while(!newName){
-                    newName = prompt("Ingresa un nombre valido")
-                }
-                this.updateTask(task.id, newName);
+                const $inputNewName = document.createElement('INPUT');
+                const $buttonSend = document.createElement('BUTTON');
+                $buttonSend.textContent = 'Send'
+                $buttonSend.addEventListener('click', () => {
+                    this.updateTask(task.id, $inputNewName.value);
+                })
+
+
+                item.append($inputNewName, $buttonSend);
+                
+
+
 
             });
 

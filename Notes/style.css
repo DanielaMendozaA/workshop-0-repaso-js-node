@@ -1,0 +1,16 @@
+.important-note{
+   color : red;
+}
+
+.li-styles{
+    display: flex;
+    /* border: 2px solid black; */
+}
+
+ul{
+    /* border: 2px solid red; */
+}
+
+ul li{
+    /* border: 2px solid rgb(47, 45, 145); */
+}
